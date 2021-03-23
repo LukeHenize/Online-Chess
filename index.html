@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Chess</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        </style>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.21.7.min.js"></script>
+        <script src="./scripts/Connection.js"></script>
+        <script src="./scripts/UIHandler.js"></script>
+        <script src="./scripts/utility.js"></script>
+        <script src="./scripts/Piece.js"></script>
+        <script src="./scripts/pieces/Bishop.js"></script>
+        <script src="./scripts/pieces/King.js"></script>
+        <script src="./scripts/pieces/Knight.js"></script>
+        <script src="./scripts/pieces/Pawn.js"></script>
+        <script src="./scripts/pieces/Queen.js"></script>
+        <script src="./scripts/GameHandler.js"></script>
+        <script src="./scripts/pieces/Rook.js"></script>
+        <script src="./scripts/Game.js"></script>
+    </head>
+    <body>
+        <div id="startScreen" class="start_screen_container no_select">
+            <div class="title">Easy Chess</div>
+            <div class="subtitle">A collaboration by Tim and Luke</div>
+            <img class="start_button" id="startWhite" src="images/pieces/king_w.png" onclick="createGame(1)">
+            <img class="start_button" id="startBlack" src="images/pieces/king_b.png" onclick="createGame(2)">
+            <br>
+            <input id="lobbyInput" class="lobby_input" value="" maxlength="6" placeholder="ABC123">
+            <br>
+            <div id="lobbyName" class="lobby_name" onclick="copy()">ABC123</div>
+            <br>
+            <div id="lobbyMessage" class="lobby_message">No lobby found</div>
+            <br>
+            <div class="start_screen_button" id="startA" onclick="startLocalGame()">Local Game</div>
+            <div class="start_screen_button" id="startB" onclick="promptJoin()">Join Game</div>
+            <div class="start_screen_button" id="startC" onclick="promptCreate()">Create Game</div>
+            <input class="name_input" id="nameInput" maxlength="17" value="Anon"> 
+        </div>
+        
+        <center>
+        <br>
+        <div class="full_container">
+            <table><tbody id="board"></tbody></table>
+            <div class="right_container">
+                <div class="timer" id="timerTop">20:00</div>
+                <div class="name" id="nameTop">Roux</div>
+                <div class="ui_button" onclick="rotateBoard()">
+                    <img src="images/rotate.png">
+                </div>
+                <div class="ui_button">
+                    <img src="images/flag.png">
+                </div>
+                <div class="ui_button">
+                    <img src="images/handshake.png">
+                </div>
+                <div id="chatbox" class="chatbox">
+                </div>
+                <input id="input" class="chat_input">
+                <img src="images/send.png" class="send_button" onclick="sendMessage()" id="sendButton"></img>
+                
+                <div class="name" id="nameBottom">Invincible</div>
+                <div class="timer" id="timerBottom">20:00</div>
+            </div>
+            <div class="promotion_container">
+                <img class="promotion_piece" src="images/pieces/queen_w.png">
+                <img class="promotion_piece" src="images/pieces/bishop_w.png">
+                <img class="promotion_piece" src="images/pieces/knight_w.png">
+                <img class="promotion_piece" src="images/pieces/rook_w.png">
+            </div>
+        </div>
+        <img draggable="false" class="draggable_piece noselect avoid_clicks" id="draggable" src="images/pieces/bishop_b.png">
+        </center>
+    </body>
+</html>
